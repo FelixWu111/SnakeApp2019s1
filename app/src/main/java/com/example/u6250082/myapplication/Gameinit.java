@@ -13,7 +13,7 @@ public class Gameinit {
     public void firstStep(){
         buildw();
     }
-
+    //u6250866
     void buildw(){
         for (int i =0;i<xboard;i++){
             if (i==0){
@@ -30,7 +30,7 @@ public class Gameinit {
             }
         }
     }
-
+    //u6250866
     public Board[] getboardState(){
         int index = xboard*yboard;
         Board[] boardState = new Board[index];
