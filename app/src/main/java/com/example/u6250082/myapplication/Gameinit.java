@@ -6,11 +6,25 @@ public class Gameinit {
     public static final int xboard =18;
     public static final int yboard =27;
 
-    ArrayList<Position> outside = new ArrayList<>();
+    //u6250866
+    public enum orientate{
+        up,down,left,right
+    }
+
+    public enum state{
+        alive,dead,start
+    }
+
+    ArrayList<Integer> outside = new ArrayList<>();
+    ArrayList<Integer> player = new ArrayList<>();
+
+    private orientate action = orientate.right;
+    private state situation = state.alive;
 
     public Gameinit(){ }
 
     public void firstStep(){
+        builds();
         buildw();
     }
     //u6250866 and u6250082
@@ -18,19 +32,28 @@ public class Gameinit {
     *  18, 19,.. 35
     *  36, 37,......
     *  468........ 485*/
-    void buildw(){
+
+    public void builds(){
+        player.clear();
+        int[] init = {44,43,42,41,40};
+        for (int i :init){
+        player.add(i);}
+
+    }
+    //u6250082
+    public void buildw(){
         for (int i =0;i<xboard;i++){
             if (i==0){
                 for(int j=0; j<yboard;j++){ //for left wall
-                    outside.add(new Position(j*18));
+                    outside.add(j*18);
                 }
             }else if (i == xboard-1){
                 for(int l=0; l<yboard;l++){//for right wall
-                    outside.add(new Position(l*18+17));
+                    outside.add(l*18+17);
                 }
             }else {
-                outside.add(new Position(i+18)); //THE TOP WALL STARTS FROM INDEX 1!
-                outside.add(new Position(468+i));
+                outside.add(i+18); //THE TOP WALL STARTS FROM INDEX 1!
+                outside.add(468+i);
             }
         }
     }
@@ -44,11 +67,47 @@ public class Gameinit {
             boardState[z]= Board.Path;
         }
 
-        for (Position p: outside ){
-            boardState[p.geti()]= Board.Edge;//we list all points in the points to edge.
+        for (Integer p: outside ){
+            boardState[p]= Board.Edge;//we list all points in the points to edge.
         }
+
+        for (Integer s:player){
+            boardState[s] = Board.Body;
+        }
+        boardState[player.get(0)] = Board.Head;
         return boardState;
     }
+    //u6250082
+    public void refreshState(){
+        if (action==orientate.up){
+            refreshPlayer(18);
+        }else if (action==orientate.down){
+            refreshPlayer(-18);
+        }else if (action==orientate.right){
+            refreshPlayer(1);
+        }else if (action==orientate.left){
+            refreshPlayer(-1);
+        }
 
+        for(Integer p:outside){
+            if (player.get(0).equals(p)){
+                situation=state.dead;
+            }
 
+        }
+    }
+    //u6250866
+    public void refreshPlayer(int change){
+        for(int n=player.size()-1;n>=0;n--){
+            if (n==0){
+                player.set(0,(player.get(0)+change));
+            }else {
+              player.set(n,player.get(n-1));
+            }
+        }
+    }
+    //u6250866
+    public state getnowState(){
+        return situation;
+    }
 }

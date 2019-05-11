@@ -17,7 +17,7 @@ public class drawSnack extends View {
 
     Board[] ondraw;
 
-    public drawSnack(Context c, @Nullable AttributeSet a) {
+    public drawSnack(Context c, AttributeSet a) {
         super(c, a);
     }
 
