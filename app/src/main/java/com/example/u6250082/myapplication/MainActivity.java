@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gi.refreshState();
                 if (gi.getnowState()== Gameinit.state.alive){
-                    h.postDelayed(this,150);
+                    h.postDelayed(this,80);
                 }
                 if (gi.getnowState()== Gameinit.state.dead){
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
             }
-        },150);
+        },80);
     }
 
 
