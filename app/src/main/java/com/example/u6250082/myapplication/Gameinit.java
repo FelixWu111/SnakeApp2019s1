@@ -6,7 +6,7 @@ public class Gameinit {
     public static final int xboard =18;
     public static final int yboard =27;
 
-    ArrayList<Point> points = new ArrayList<>();
+    ArrayList<Point> outside = new ArrayList<>();
 
     public Gameinit(){ }
 
@@ -18,15 +18,15 @@ public class Gameinit {
         for (int i =0;i<xboard;i++){
             if (i==0){
                 for(int j=0; j<yboard;j++){ //for left wall
-                    points.add(new Point(0,j));
+                    outside.add(new Point(0,j));
                 }
             }else if (i == xboard-1){
                 for(int l=0; l<yboard;l++){//for right wall
-                    points.add(new Point(0,l));
+                    outside.add(new Point(xboard-1,l));
                 }
             }else {
-                points.add(new Point(i,0));
-                points.add(new Point(i,yboard-1));
+                outside.add(new Point(i,1)); //THE TOP WALL STARTS FROM INDEX 1!
+                outside.add(new Point(i,yboard-1));
             }
         }
     }
@@ -34,8 +34,13 @@ public class Gameinit {
     public Board[] getboardState(){
         int index = xboard*yboard;
         Board[] boardState = new Board[index];
-        for (Point p: points ){
-            boardState[p.getj()*18+p.geti()+1]= Board.Edge;//we list all points in the points to edge.
+
+        for (int z = 0;z<xboard*yboard;z++){
+            boardState[z]= Board.Path;
+        }
+
+        for (Point p: outside ){
+            boardState[p.getj()*18+p.geti()]= Board.Edge;//we list all points in the points to edge.
         }
         return boardState;
     }

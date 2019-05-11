@@ -14,7 +14,7 @@ import java.util.List;
 
 //u6250082
 public class drawSnack extends View {
-    Paint p = new Paint();
+
     Board[] ondraw;
 
     public drawSnack(Context c, @Nullable AttributeSet a) {
@@ -23,35 +23,32 @@ public class drawSnack extends View {
 
     public void putinWhatToDraw(Board[] b){this.ondraw = b;}
 
+
+    Paint p = new Paint();
     @Override // Path,Edge,Head,Body,Bean
     protected void onDraw(Canvas c) {
         super.onDraw(c);
 
         for(int i = 0; i<ondraw.length ;i++){
             if(ondraw[i]==Board.Path){
-            Paint p = new Paint();
             p.setColor(Color.WHITE);
-            c.drawRect(new Rect((i%18)*(c.getWidth()/36)+c.getWidth()/36, (27-i%27)*(c.getHeight()/27)+c.getHeight()/54, c.getWidth()/18, c.getHeight()/27), p);}
+                c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
             if(ondraw[i]==Board.Edge){
-                Paint p = new Paint();
-                p.setColor(Color.BLACK);
-                c.drawRect(new Rect((i%18)*(c.getWidth()/36)+c.getWidth()/36, (27-i%27)*(c.getHeight()/27)+c.getHeight()/54, c.getWidth()/18, c.getHeight()/27), p);}
+                p.setColor(Color.BLUE);
+                c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
             if(ondraw[i]==Board.Head){
-                Paint p = new Paint();
                 p.setColor(Color.GREEN);
-                c.drawRect(new Rect((i%18)*(c.getWidth()/36)+c.getWidth()/36, (27-i%27)*(c.getHeight()/27)+c.getHeight()/54, c.getWidth()/18, c.getHeight()/27), p);}
+                c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
             if(ondraw[i]==Board.Body){
-                Paint p = new Paint();
-                p.setColor(Color.BLUE);
-                c.drawRect(new Rect((i%18)*(c.getWidth()/36)+c.getWidth()/36, (27-i%27)*(c.getHeight()/27)+c.getHeight()/54, c.getWidth()/18, c.getHeight()/27), p);}
+                p.setColor(Color.RED);
+                c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
             if(ondraw[i]==Board.Bean){
-                Paint p = new Paint();
                 p.setColor(Color.YELLOW);
-                c.drawRect(new Rect((i%18)*(c.getWidth()/36)+c.getWidth()/36, (27-i%27)*(c.getHeight()/27)+c.getHeight()/54, c.getWidth()/18, c.getHeight()/27), p);}
+                c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
 
 
