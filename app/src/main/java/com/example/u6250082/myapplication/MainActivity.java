@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void restart(View v){  //create the function restart
+        gi.setState(Gameinit.state.alive);
         gi.setOri(Gameinit.orientate.right);
         gi.firstStep();
     }

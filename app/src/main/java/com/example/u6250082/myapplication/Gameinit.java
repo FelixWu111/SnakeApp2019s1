@@ -117,4 +117,5 @@ public class Gameinit {
         return action;
     }// return what direction of the snake.
     public void setOri(orientate o ){ action=o; } // change the snake direction.
+    public void setState(state s) {situation=s;}// change the situation of game.
 }
