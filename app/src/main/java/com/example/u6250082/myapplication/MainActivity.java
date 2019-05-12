@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gi.refreshState();
                 if (gi.getnowState()== Gameinit.state.alive){
-                    h.postDelayed(this,800);
+                    h.postDelayed(this,400);//set the time of game delay
                 }
                 if (gi.getnowState()== Gameinit.state.dead){
 
@@ -41,32 +41,33 @@ public class MainActivity extends AppCompatActivity {
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
             }
-        },800);
+        },400);
     }
 
 
     //u6250866
-    public void left(View v){  //create the function buttonPress
+    public void left(View v){  //create the function left
         if (gi.getnowOri()!= Gameinit.orientate.right) {
             gi.setOri(Gameinit.orientate.left);
         }
     }
-    public void right(View v){  //create the function buttonPress
+    public void right(View v){  //create the function right
         if (gi.getnowOri()!= Gameinit.orientate.left) {
             gi.setOri(Gameinit.orientate.right);
         }
     }
-    public void down(View v){  //create the function buttonPress
+    public void down(View v){  //create the function down
         if (gi.getnowOri()!= Gameinit.orientate.up) {
             gi.setOri(Gameinit.orientate.down);
         }
     }
-    public void up(View v){  //create the function buttonPress
+    public void up(View v){  //create the function up
         if (gi.getnowOri()!= Gameinit.orientate.down) {
             gi.setOri(Gameinit.orientate.up);
         }
     }
-    public void restart(View v){  //create the function buttonPress
+    public void restart(View v){  //create the function restart
+        gi.setOri(Gameinit.orientate.right);
         gi.firstStep();
     }
 

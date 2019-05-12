@@ -23,7 +23,9 @@ public class Gameinit {
     private orientate action = orientate.right;
     private state situation = state.alive;
 
-    public Gameinit(){ }
+    public Gameinit(){
+
+    }
 
     public void firstStep(){
         builds();
@@ -37,10 +39,9 @@ public class Gameinit {
 
     public void builds(){
         player.clear();
-        int[] init = {44,43,42,41,40};
+        int[] init = {80,79,78,77,76};// set the start position
         for (int i :init){
         player.add(i);}
-
     }
     //u6250082
     public void buildw(){
@@ -59,14 +60,13 @@ public class Gameinit {
             }
         }
     }
-
     //u6250866
     public Board[] getboardState(){
         int index = xboard*yboard;
         Board[] boardState = new Board[index];
 
         for (int z = 0;z<xboard*yboard;z++){
-            boardState[z]= Board.Path;
+            boardState[z]= Board.Path; //build all the path.
         }
 
         for (Integer p: outside ){
@@ -74,7 +74,7 @@ public class Gameinit {
         }
 
         for (Integer s:player){
-            boardState[s] = Board.Body;
+            boardState[s] = Board.Body;// build the snake's body.
         }
         boardState[player.get(0)] = Board.Head;
         return boardState;
@@ -102,9 +102,9 @@ public class Gameinit {
     public void refreshPlayer(int change){
         for(int n=player.size()-1;n>=0;n--){
             if (n==0){
-                player.set(0,(player.get(0)+change));
+                player.set(0,(player.get(0)+change)); //refresh the head of snake
             }else {
-              player.set(n,player.get(n-1));
+              player.set(n,player.get(n-1)); // refresh the body of snake
             }
         }
     }
@@ -112,9 +112,9 @@ public class Gameinit {
     //u6250866
     public state getnowState(){
         return situation;
-    }
+    } // return the situation of game.
     public orientate getnowOri(){
         return action;
-    }
-    public void setOri(orientate o ){ action=o; }
+    }// return what direction of the snake.
+    public void setOri(orientate o ){ action=o; } // change the snake direction.
 }

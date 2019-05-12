@@ -49,9 +49,6 @@ public class drawSnack extends View {
             if(ondraw[i]==Board.Bean){
                 p.setColor(Color.YELLOW);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
-
-
-
         }
 
     }
