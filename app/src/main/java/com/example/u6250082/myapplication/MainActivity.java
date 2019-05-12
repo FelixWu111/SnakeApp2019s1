@@ -66,5 +66,8 @@ public class MainActivity extends AppCompatActivity {
             gi.setOri(Gameinit.orientate.up);
         }
     }
+    public void restart(View v){  //create the function buttonPress
+        gi.firstStep();
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.example.u6250082.myapplication;
 
+import android.widget.Button;
+
 import java.util.ArrayList;
 
 public class Gameinit {
@@ -44,16 +46,16 @@ public class Gameinit {
     public void buildw(){
         for (int i =0;i<xboard;i++){
             if (i==0){
-                for(int j=0; j<yboard;j++){ //for left wall
+                for(int j=0; j<yboard-3;j++){ //for left wall
                     outside.add(j*18);
                 }
             }else if (i == xboard-1){
-                for(int l=0; l<yboard;l++){//for right wall
+                for(int l=0; l<yboard-3;l++){//for right wall
                     outside.add(l*18+17);
                 }
             }else {
                 outside.add(i+18); //THE TOP WALL STARTS FROM INDEX 1!
-                outside.add(468+i);
+                outside.add(414+i);
             }
         }
     }
@@ -80,9 +82,9 @@ public class Gameinit {
     //u6250082
     public void refreshState(){
         if (action==orientate.up){
-            refreshPlayer(18);
-        }else if (action==orientate.down){
             refreshPlayer(-18);
+        }else if (action==orientate.down){
+            refreshPlayer(18);
         }else if (action==orientate.right){
             refreshPlayer(1);
         }else if (action==orientate.left){
@@ -106,8 +108,13 @@ public class Gameinit {
             }
         }
     }
+
     //u6250866
     public state getnowState(){
         return situation;
     }
+    public orientate getnowOri(){
+        return action;
+    }
+    public void setOri(orientate o ){ action=o; }
 }
