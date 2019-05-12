@@ -3,6 +3,8 @@ package com.example.u6250082.myapplication;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         gi.firstStep();
 
         ds = (drawSnack)findViewById(R.id.drawSnack);
+
         ds.putinWhatToDraw(gi.getboardState());
         ds.invalidate();
         refreshHandler();
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gi.refreshState();
                 if (gi.getnowState()== Gameinit.state.alive){
-                    h.postDelayed(this,80);
+                    h.postDelayed(this,800);
                 }
                 if (gi.getnowState()== Gameinit.state.dead){
 
@@ -38,8 +41,30 @@ public class MainActivity extends AppCompatActivity {
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
             }
-        },80);
+        },800);
     }
 
+
+    //u6250866
+    public void left(View v){  //create the function buttonPress
+        if (gi.getnowOri()!= Gameinit.orientate.right) {
+            gi.setOri(Gameinit.orientate.left);
+        }
+    }
+    public void right(View v){  //create the function buttonPress
+        if (gi.getnowOri()!= Gameinit.orientate.left) {
+            gi.setOri(Gameinit.orientate.right);
+        }
+    }
+    public void down(View v){  //create the function buttonPress
+        if (gi.getnowOri()!= Gameinit.orientate.up) {
+            gi.setOri(Gameinit.orientate.down);
+        }
+    }
+    public void up(View v){  //create the function buttonPress
+        if (gi.getnowOri()!= Gameinit.orientate.down) {
+            gi.setOri(Gameinit.orientate.up);
+        }
+    }
 
 }
