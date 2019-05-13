@@ -28,7 +28,6 @@ public class drawSnack extends View {
     @Override // Path,Edge,Head,Body,Bean
     protected void onDraw(Canvas c) {
         super.onDraw(c);
-
         for(int i = 0; i<ondraw.length ;i++){
             if(ondraw[i]==Board.Path){
             p.setColor(Color.WHITE);

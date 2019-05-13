@@ -36,7 +36,13 @@ public class MainActivity extends AppCompatActivity {
                     h.postDelayed(this,400);//set the time of game delay
                 }
                 if (gi.getnowState()== Gameinit.state.dead){
-
+                    gi.setState(Gameinit.state.alive);
+                    gi.setOri(Gameinit.orientate.right);
+                    gi.firstStep();
+                    ds = (drawSnack)findViewById(R.id.drawSnack);
+                    ds.putinWhatToDraw(gi.getboardState());
+                    ds.invalidate();
+                    refreshHandler();
                 }
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
