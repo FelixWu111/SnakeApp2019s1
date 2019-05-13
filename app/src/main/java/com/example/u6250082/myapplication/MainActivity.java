@@ -26,31 +26,6 @@ public class MainActivity extends AppCompatActivity {
         ds.invalidate();
         refreshHandler();
     }
-    private void refreshHandler(){//The idea of delay 80ms in our MainActivity refreshHander
-                                  // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
-                                  //  because we countered a bug that if you don't delay, the snack will teleport.
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                gi.refreshState();
-                if (gi.getnowState()== GameLogic.state.alive){
-                    h.postDelayed(this,180);//set the time of game delay
-                }
-                if (gi.getnowState()== GameLogic.state.dead){
-                    gi.setState(GameLogic.state.alive);
-                    gi.setOri(GameLogic.orientate.right);
-                    gi.firstStep();
-                    ds = (drawSnack)findViewById(R.id.drawSnack);
-                    ds.putinWhatToDraw(gi.getboardState());
-                    ds.invalidate();
-                    refreshHandler();
-                }
-                ds.putinWhatToDraw(gi.getboardState());
-                ds.invalidate();
-            }
-        },180);
-    }
-
 
     //u6250866 YuWu
     public void left(View v){  //create the function left
@@ -77,6 +52,31 @@ public class MainActivity extends AppCompatActivity {
         gi.setState(GameLogic.state.alive);
         gi.setOri(GameLogic.orientate.right);
         gi.firstStep();
+    }
+
+    private void refreshHandler(){//The idea of delay 80ms in our MainActivity refreshHander
+                                  // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
+                                  //  because we countered a bug that if you don't delay, the snack will teleport.
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                gi.refreshState();
+                if (gi.getnowState()== GameLogic.state.alive){
+                    h.postDelayed(this,180);//set the time of game delay
+                }
+                if (gi.getnowState()== GameLogic.state.dead){
+                    gi.setState(GameLogic.state.alive);
+                    gi.setOri(GameLogic.orientate.right);
+                    gi.firstStep();
+                    ds = (drawSnack)findViewById(R.id.drawSnack);
+                    ds.putinWhatToDraw(gi.getboardState());
+                    ds.invalidate();
+                    refreshHandler();
+                }
+                ds.putinWhatToDraw(gi.getboardState());
+                ds.invalidate();
+            }
+        },180);
     }
 
 }
