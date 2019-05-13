@@ -4,8 +4,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gi.refreshState();
                 if (gi.getnowState()== Gameinit.state.alive){
-                    h.postDelayed(this,400);//set the time of game delay
+                    h.postDelayed(this,180);//set the time of game delay
                 }
                 if (gi.getnowState()== Gameinit.state.dead){
                     gi.setState(Gameinit.state.alive);
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
             }
-        },400);
+        },180);
     }
 
 

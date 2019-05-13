@@ -1,7 +1,5 @@
 package com.example.u6250082.myapplication;
 
-import android.widget.Button;
-
 import java.util.ArrayList;
 
 public class Gameinit {
@@ -12,13 +10,16 @@ public class Gameinit {
     public enum orientate{
         up,down,left,right
     }
-
+    public enum Board {
+        Path,Edge,Head,Body,Bean
+    }
     public enum state{
         alive,dead,start
     }
 
     ArrayList<Integer> outside = new ArrayList<>();
     ArrayList<Integer> player = new ArrayList<>();
+    ArrayList<Integer> bean = new ArrayList<>();
 
     private orientate action = orientate.right;
     private state situation = state.alive;
