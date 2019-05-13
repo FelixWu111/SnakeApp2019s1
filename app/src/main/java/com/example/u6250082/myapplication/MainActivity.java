@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    Gameinit gi;
+    GameLogic gi;
     drawSnack ds;
     final Handler h =new Handler();
 
@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gi = new Gameinit();
+        gi = new GameLogic();
         gi.firstStep();
+        gi.buildb();
 
         ds = (drawSnack)findViewById(R.id.drawSnack);
 
@@ -25,17 +26,19 @@ public class MainActivity extends AppCompatActivity {
         ds.invalidate();
         refreshHandler();
     }
-    private void refreshHandler(){
+    private void refreshHandler(){//The idea of delay 80ms in our MainActivity refreshHander
+                                  // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
+                                  //  because we countered a bug that if you don't delay, the snack will teleport.
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
                 gi.refreshState();
-                if (gi.getnowState()== Gameinit.state.alive){
+                if (gi.getnowState()== GameLogic.state.alive){
                     h.postDelayed(this,180);//set the time of game delay
                 }
-                if (gi.getnowState()== Gameinit.state.dead){
-                    gi.setState(Gameinit.state.alive);
-                    gi.setOri(Gameinit.orientate.right);
+                if (gi.getnowState()== GameLogic.state.dead){
+                    gi.setState(GameLogic.state.alive);
+                    gi.setOri(GameLogic.orientate.right);
                     gi.firstStep();
                     ds = (drawSnack)findViewById(R.id.drawSnack);
                     ds.putinWhatToDraw(gi.getboardState());
@@ -49,30 +52,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //u6250866
+    //u6250866 YuWu
     public void left(View v){  //create the function left
-        if (gi.getnowOri()!= Gameinit.orientate.right) {
-            gi.setOri(Gameinit.orientate.left);
+        if (gi.getnowOri()!= GameLogic.orientate.right) {
+            gi.setOri(GameLogic.orientate.left);
         }
     }
     public void right(View v){  //create the function right
-        if (gi.getnowOri()!= Gameinit.orientate.left) {
-            gi.setOri(Gameinit.orientate.right);
+        if (gi.getnowOri()!= GameLogic.orientate.left) {
+            gi.setOri(GameLogic.orientate.right);
         }
     }
     public void down(View v){  //create the function down
-        if (gi.getnowOri()!= Gameinit.orientate.up) {
-            gi.setOri(Gameinit.orientate.down);
+        if (gi.getnowOri()!= GameLogic.orientate.up) {
+            gi.setOri(GameLogic.orientate.down);
         }
     }
     public void up(View v){  //create the function up
-        if (gi.getnowOri()!= Gameinit.orientate.down) {
-            gi.setOri(Gameinit.orientate.up);
+        if (gi.getnowOri()!= GameLogic.orientate.down) {
+            gi.setOri(GameLogic.orientate.up);
         }
     }
     public void restart(View v){  //create the function restart
-        gi.setState(Gameinit.state.alive);
-        gi.setOri(Gameinit.orientate.right);
+        gi.setState(GameLogic.state.alive);
+        gi.setOri(GameLogic.orientate.right);
         gi.firstStep();
     }
 

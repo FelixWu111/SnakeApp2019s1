@@ -1,12 +1,13 @@
 package com.example.u6250082.myapplication;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-public class Gameinit {
+public class GameLogic {
     public static final int xboard =18;
     public static final int yboard =27;
 
-    //u6250866
+    //u6250866 YuWu
     public enum orientate{
         up,down,left,right
     }
@@ -24,7 +25,7 @@ public class Gameinit {
     private orientate action = orientate.right;
     private state situation = state.alive;
 
-    public Gameinit(){
+    public GameLogic(){
 
     }
 
@@ -32,7 +33,7 @@ public class Gameinit {
         builds();
         buildw();
     }
-    //u6250866 and u6250082
+    //u6250866 YuWu and u6250082 XuguangSong
     /* 0, 1, 2,.. 17
     *  18, 19,.. 35
     *  36, 37,......
@@ -44,7 +45,7 @@ public class Gameinit {
         for (int i :init){
         player.add(i);}
     }
-    //u6250082
+    //u6250082 Xuguang Song
     public void buildw(){
         for (int i =0;i<xboard;i++){
             if (i==0){
@@ -61,7 +62,21 @@ public class Gameinit {
             }
         }
     }
-    //u6250866
+    //u6250082 Xuguang Song
+    public void buildb(){
+        Random rand = new Random();
+        Integer b = rand.nextInt(396);
+        for (Integer i : outside){
+            for (Integer j : player){
+                while (b.equals(i)||b.equals(j)||b<36) {
+                    b=rand.nextInt(396);
+                }
+            }
+        }
+        bean.add(0,b);
+    }
+
+    //u6250866 YuWu
     public Board[] getboardState(){
         int index = xboard*yboard;
         Board[] boardState = new Board[index];
@@ -77,10 +92,15 @@ public class Gameinit {
         for (Integer s:player){
             boardState[s] = Board.Body;// build the snake's body.
         }
+
+        for (Integer b:bean){
+            boardState[b] = Board.Bean;// build the bean.
+        }
+
         boardState[player.get(0)] = Board.Head;
         return boardState;
     }
-    //u6250082
+    //u6250082 Xuguang Song
     public void refreshState(){
         if (action==orientate.up){
             refreshPlayer(-18);
@@ -97,9 +117,29 @@ public class Gameinit {
                 situation=state.dead;
             }
 
+        if(player.get(0).equals(bean.get(0))){
+            player.add(player.get(player.size()-1));
+            Random rand = new Random();
+            Integer b = rand.nextInt(396);
+            for (Integer i : outside){
+                for (Integer j : player){
+                    while (b.equals(i)||b.equals(j)||b<36) {
+                        b=rand.nextInt(396);
+                    }
+                }
+            }
+            bean.set(0,b);
+        }
+
+        for(int y =1; y<player.size()-1;y++)
+        if(player.get(0).equals(player.get(y))){
+            situation=state.dead;
+            }
+
         }
     }
-    //u6250866
+
+    //u6250866 YuWu
     public void refreshPlayer(int change){
         for(int n=player.size()-1;n>=0;n--){
             if (n==0){
@@ -110,7 +150,7 @@ public class Gameinit {
         }
     }
 
-    //u6250866
+    //u6250866 YuWu
     public state getnowState(){
         return situation;
     } // return the situation of game.

@@ -7,53 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<com.example.u6250082.myapplication.drawSnack
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/drawSnack"/>
+    <com.example.u6250082.myapplication.drawSnack
+        android:id="@+id/drawSnack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="0dp" />
     <!--u6174243-->
     <Button
         android:id="@+id/left"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="70dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="L"
         android:onClick="left"
+        android:text="L"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.295"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <Button
         android:id="@+id/right"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="75dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="R"
         android:onClick="right"
+        android:text="R"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintHorizontal_bias="0.778"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <Button
         android:id="@+id/down"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -64,6 +66,7 @@
         android:text="D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/drawSnack"
         app:layout_constraintVertical_bias="1.0" />
@@ -111,8 +114,8 @@
 
     <Button
         android:id="@+id/up"
-        android:layout_width="38dp"
-        android:layout_height="37dp"
+        android:layout_width="64dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -123,8 +126,9 @@
         android:text="U"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="@+id/drawSnack"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.909" />
 
 </android.support.constraint.ConstraintLayout>

@@ -12,13 +12,13 @@ import android.view.View;
 //u6250082
 public class drawSnack extends View {
 
-    Gameinit.Board[] ondraw;
+    GameLogic.Board[] ondraw;
 
     public drawSnack(Context c, AttributeSet a) {
         super(c, a);
     }
 
-    public void putinWhatToDraw(Gameinit.Board[] b){this.ondraw = b;}
+    public void putinWhatToDraw(GameLogic.Board[] b){this.ondraw = b;}
 
 
     Paint p = new Paint();
@@ -26,23 +26,23 @@ public class drawSnack extends View {
     protected void onDraw(Canvas c) {
         super.onDraw(c);
         for(int i = 0; i<ondraw.length ;i++){
-            if(ondraw[i]==Gameinit.Board.Path){
+            if(ondraw[i]==GameLogic.Board.Path){
             p.setColor(Color.WHITE);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
-            if(ondraw[i]==Gameinit.Board.Edge){
+            if(ondraw[i]==GameLogic.Board.Edge){
                 p.setColor(Color.BLUE);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
-            if(ondraw[i]==Gameinit.Board.Head){
+            if(ondraw[i]==GameLogic.Board.Head){
                 p.setColor(Color.GREEN);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
-            if(ondraw[i]==Gameinit.Board.Body){
+            if(ondraw[i]==GameLogic.Board.Body){
                 p.setColor(Color.RED);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
 
-            if(ondraw[i]==Gameinit.Board.Bean){
+            if(ondraw[i]==GameLogic.Board.Bean){
                 p.setColor(Color.YELLOW);
                 c.drawRect(new Rect((i%18)*(c.getWidth()/18), ((int)Math.ceil(i/18)-1)*(c.getHeight()/27), (i%18)*(c.getWidth()/18)+c.getWidth()/18, ((int)Math.ceil(i/18)-1)*(c.getHeight()/27)+c.getHeight()/27), p);}
         }
