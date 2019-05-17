@@ -11,23 +11,25 @@ public class MainActivity extends AppCompatActivity {
     drawSnack ds;
     final Handler h =new Handler();
 
+    /*u6250866
+      YuWu*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         gi = new GameLogic();
-        gi.firstStep();
-        gi.buildb();
-
+        gi.firstStep(); //initialize the game's basic builds i.e. walls and the snack
+        gi.buildb(); //add in the random bean
         ds = (drawSnack)findViewById(R.id.drawSnack);
-
         ds.putinWhatToDraw(gi.getboardState());
-        ds.invalidate();
-        refreshHandler();
+        ds.invalidate();//draw the current state
+
+        refreshHandler();//delay and refresh the game situation
     }
 
-    //u6250866 YuWu
+    /*u6250866
+      YuWu*/
     public void left(View v){  //create the function left
         if (gi.getnowOri()!= GameLogic.orientate.right) {
             gi.setOri(GameLogic.orientate.left);
@@ -52,14 +54,17 @@ public class MainActivity extends AppCompatActivity {
         gi.setState(GameLogic.state.alive);
         gi.setOri(GameLogic.orientate.right);
         gi.firstStep();
+        gi.buildb();
     }
 
-    private void refreshHandler(){//The idea of delay 80ms in our MainActivity refreshHander
+    private void refreshHandler(){//The idea of delay 180ms in our MainActivity refreshHander
                                   // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
                                   //  because we countered a bug that if you don't delay, the snack will teleport.
         h.postDelayed(new Runnable() {
             @Override
             public void run() {
+                /*u6250866
+                  YuWu*/
                 gi.refreshState();
                 if (gi.getnowState()== GameLogic.state.alive){
                     h.postDelayed(this,180);//set the time of game delay
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     gi.setState(GameLogic.state.alive);
                     gi.setOri(GameLogic.orientate.right);
                     gi.firstStep();
+
                     ds = (drawSnack)findViewById(R.id.drawSnack);
                     ds.putinWhatToDraw(gi.getboardState());
                     ds.invalidate();

@@ -9,20 +9,16 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-//u6250082
+/*u6250082
+  Xuguang Song */
 public class drawSnack extends View {
-
     GameLogic.Board[] ondraw;
-
-    public drawSnack(Context c, AttributeSet a) {
-        super(c, a);
-    }
-
     public void putinWhatToDraw(GameLogic.Board[] b){this.ondraw = b;}
 
+    public drawSnack(Context c, AttributeSet a) {super(c, a);}
 
     Paint p = new Paint();
-    @Override // Path,Edge,Head,Body,Bean
+    @Override // Draw Path,Edge,Head,Body,Bean
     protected void onDraw(Canvas c) {
         super.onDraw(c);
         for(int i = 0; i<ondraw.length ;i++){

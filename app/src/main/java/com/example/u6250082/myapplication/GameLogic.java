@@ -7,7 +7,8 @@ public class GameLogic {
     public static final int xboard =18;
     public static final int yboard =27;
 
-    //u6250866 YuWu
+    /*u6250866
+     YuWu*/
     public enum orientate{
         up,down,left,right
     }
@@ -25,15 +26,14 @@ public class GameLogic {
     private orientate action = orientate.right;
     private state situation = state.alive;
 
-    public GameLogic(){
-
-    }
+    public GameLogic(){} // just keep the constructer if we need further extensions
 
     public void firstStep(){
         builds();
         buildw();
     }
-    //u6250866 YuWu and u6250082 XuguangSong
+    /*u6250866 YuWu and
+      u6250082 XuguangSong*/
     /* 0, 1, 2,.. 17
     *  18, 19,.. 35
     *  36, 37,......
@@ -45,7 +45,8 @@ public class GameLogic {
         for (int i :init){
         player.add(i);}
     }
-    //u6250082 Xuguang Song
+    /*u6250082
+    Xuguang Song*/
     public void buildw(){
         for (int i =0;i<xboard;i++){
             if (i==0){
@@ -62,7 +63,8 @@ public class GameLogic {
             }
         }
     }
-    //u6250082 Xuguang Song
+    /*u6250082
+     Xuguang Song*/
     public void buildb(){
         Random rand = new Random();
         Integer b = rand.nextInt(396);
@@ -76,7 +78,8 @@ public class GameLogic {
         bean.add(0,b);
     }
 
-    //u6250866 YuWu
+    /*u6250866
+      YuWu*/
     public Board[] getboardState(){
         int index = xboard*yboard;
         Board[] boardState = new Board[index];
@@ -100,7 +103,9 @@ public class GameLogic {
         boardState[player.get(0)] = Board.Head;
         return boardState;
     }
-    //u6250082 Xuguang Song
+
+    /*u6250082
+      Xuguang Song*/
     public void refreshState(){
         if (action==orientate.up){
             refreshPlayer(-18);
@@ -139,7 +144,8 @@ public class GameLogic {
         }
     }
 
-    //u6250866 YuWu
+    /*u6250866
+      YuWu*/
     public void refreshPlayer(int change){
         for(int n=player.size()-1;n>=0;n--){
             if (n==0){
@@ -150,7 +156,8 @@ public class GameLogic {
         }
     }
 
-    //u6250866 YuWu
+    /*u6250866
+      YuWu*/
     public state getnowState(){
         return situation;
     } // return the situation of game.
