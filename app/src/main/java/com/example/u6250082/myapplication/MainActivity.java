@@ -1,5 +1,6 @@
 package com.example.u6250082.myapplication;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 ds.invalidate();
             }
         },180);
+    }
+
+//Qingzheng XU
+//u6174243
+    public void menu(View v) {
+        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(i);
     }
 
 }
