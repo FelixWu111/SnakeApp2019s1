@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void start(View v) {
+    public void start(View v) {//Start tourist mode
         Intent i = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(i);
     }

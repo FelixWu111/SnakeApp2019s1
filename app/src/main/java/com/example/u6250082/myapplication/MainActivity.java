@@ -88,9 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
 //Qingzheng XU
 //u6174243
-    public void menu(View v) {
+    public void menu(View v) { //Button menu
         Intent i = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(i);
     }
-
 }
