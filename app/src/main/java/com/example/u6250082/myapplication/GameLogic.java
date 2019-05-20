@@ -62,12 +62,7 @@ public class GameLogic {
     /*u6250082
      Xuguang Song*/
     public void buildb(){
-        Random rand = new Random();
-        Integer b = rand.nextInt(396);
-        while (outside.contains(b)||player.contains(b)||b<36) {
-            b=rand.nextInt(396);
-        }
-        bean.add(0,b);
+        bean.add(0,chooseBeanPosition(outside,player));
     }
 
     /*u6250866
@@ -116,12 +111,7 @@ public class GameLogic {
 
         if(player.get(0).equals(bean.get(0))){
             player.add(player.get(player.size()-1));
-            Random rand = new Random();
-            Integer b = rand.nextInt(396);
-            while (outside.contains(b)||player.contains(b)||b<36) {
-                b=rand.nextInt(396);
-            }
-            bean.set(0,b);
+            bean.set(0,chooseBeanPosition(outside,player));
         }
 
         for(int y =1; y<player.size()-1;y++)
@@ -130,6 +120,17 @@ public class GameLogic {
             }
 
         }
+    }
+
+    /*u6250082
+      Xuguang Song*/
+    public Integer chooseBeanPosition(ArrayList<Integer> o, ArrayList<Integer> p) {
+        Random rand = new Random();
+        Integer b = rand.nextInt(396);
+        while (o.contains(b)||p.contains(b)||b<36) {
+            b=rand.nextInt(396);
+        }
+        return b;
     }
 
     /*u6250866
