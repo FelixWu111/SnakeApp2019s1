@@ -28,8 +28,8 @@ public class GameLogic {
 
     public GameLogic(){} // just keep the constructer if we need further extensions
 
-    /*u6250866 YuWu and
-      u6250082 XuguangSong*/
+    /*u6250082
+      XuguangSong*/
     /* 0, 1, 2,.. 17
     *  18, 19,.. 35
     *  36, 37,......
