@@ -6,4 +6,5 @@
     <!--u6174243-->
     <color name="white">#FAEBD7</color>> <!--AntiqueWhite-->
     <color name="black">#000000</color>>
+    <color name="gray">#444444</color>>
 </resources>
