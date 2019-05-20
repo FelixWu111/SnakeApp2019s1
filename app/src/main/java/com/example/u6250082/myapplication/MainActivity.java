@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
         gi.setState(GameLogic.state.alive);
         gi.setOri(GameLogic.orientate.right);
         gi.builds();
-        gi.buildw();
-        gi.buildb(); //add all the features
+        gi.buildw(); //add all the features
     }
 
     private void refreshHandler(){//The idea of delay 180ms in our MainActivity refreshHander
