@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         gi.builds();
         gi.buildw(); //add all the features
     }
-    
+
     /*u6250866
       YuWu*/
     long difficulty=180; //normal 180, hard 80, easy 280
