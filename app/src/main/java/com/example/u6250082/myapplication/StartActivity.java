@@ -17,7 +17,20 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
-    public void start(View v) {//Start game
+    public void starthard(View v) {//Start game
+        MainActivity.hard();
+        Intent i = new Intent(StartActivity.this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void startnormal(View v) {//Start game
+        MainActivity.normal();
+        Intent i = new Intent(StartActivity.this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void starteasy(View v) {//Start game
+        MainActivity.easy();
         Intent i = new Intent(StartActivity.this, MainActivity.class);
         startActivity(i);
     }

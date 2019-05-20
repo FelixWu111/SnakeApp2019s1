@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*u6250866
       YuWu*/
-    long difficulty=180; //normal 180, hard 80, easy 280
+    static long difficulty=180; //normal 180, hard 80, easy 280
     final Handler h =new Handler();
 
     private void refreshHandler(){//The idea of delay 180ms in our MainActivity refreshHander
@@ -99,5 +99,19 @@ public class MainActivity extends AppCompatActivity {
     public void menu(View v) { //Button menu
         Intent i = new Intent(MainActivity.this, StartActivity.class);
         startActivity(i);
+    }
+
+ /*u6250082
+   Xuguang Song*/
+   public static void hard() { //hard
+     difficulty=80;
+    }
+
+   public static void normal() { //normal
+     difficulty=180;
+    }
+
+   public static void easy() { //easy
+      difficulty=280;
     }
 }
