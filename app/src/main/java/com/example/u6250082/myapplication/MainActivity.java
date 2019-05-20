@@ -9,7 +9,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     GameLogic gi;
-    drawSnack ds;
+    DrawSnake ds;
 
     /*u6250866
       YuWu*/
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         gi.builds();
         gi.buildw(); //initialize the game's basic builds i.e. walls and the snack
         gi.buildb(); //add in the random bean
-        ds = (drawSnack)findViewById(R.id.drawSnack);
+        ds = (DrawSnake)findViewById(R.id.drawSnack);
         ds.putinWhatToDraw(gi.getboardState());
         ds.invalidate();//draw the current state
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     gi.builds();
                     gi.buildw(); //the bean will update itself, no need to add in refresh handler
 
-                    ds = (drawSnack)findViewById(R.id.drawSnack);
+                    ds = (DrawSnake)findViewById(R.id.drawSnack);
                     ds.putinWhatToDraw(gi.getboardState());
                     ds.invalidate();
                     refreshHandler();

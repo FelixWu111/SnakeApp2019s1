@@ -37,26 +37,16 @@ public class GameLogic {
 
     public void builds(){
         player.clear();
-        int[] init = {80,79,78,77,76};// set the start position
-        for (int i :init){
+        int[] snake = chooseSnakePosition();// set the start position
+        for (int i :snake){
         player.add(i);}
     }
     /*u6250082
     Xuguang Song*/
     public void buildw(){
-        for (int i =0;i<xboard;i++){
-            if (i==0){
-                for(int j=0; j<yboard-3;j++){ //for left wall
-                    outside.add(j*18);
-                }
-            }else if (i == xboard-1){
-                for(int l=0; l<yboard-3;l++){//for right wall
-                    outside.add(l*18+17);
-                }
-            }else {
-                outside.add(i+18); //THE TOP WALL STARTS FROM INDEX 1!
-                outside.add(414+i);
-            }
+        int[] wall  = chooseWallPosition();
+        for (int i = 0;i<80;i++){
+            outside.add(wall[i]);
         }
     }
     /*u6250082
@@ -124,13 +114,44 @@ public class GameLogic {
 
     /*u6250082
       Xuguang Song*/
-    public Integer chooseBeanPosition(ArrayList<Integer> o, ArrayList<Integer> p) {
+    public static Integer chooseBeanPosition(ArrayList<Integer> o, ArrayList<Integer> p) {
         Random rand = new Random();
         Integer b = rand.nextInt(396);
         while (o.contains(b)||p.contains(b)||b<36) {
             b=rand.nextInt(396);
         }
         return b;
+    }
+    /*u6250866
+          YuWu*/
+    public static int[] chooseSnakePosition() {
+        int[] init = {80,79,78,77,76};
+        return init;
+    }
+    /*u6250866
+          YuWu*/
+    public static int[] chooseWallPosition() {
+        int[] wall = new int[81];
+        ArrayList<Integer> wall0 = new ArrayList<>();
+        for (int i =0;i<xboard;i++){
+            if (i==0){
+                for(int j=0; j<yboard-3;j++){ //for left wall
+                    wall0.add(j*18);
+                }
+            }else if (i == xboard-1){
+                for(int l=0; l<yboard-3;l++){//for right wall
+                    wall0.add(l*18+17);
+                }
+            }else {
+                wall0.add(18+i); //THE TOP WALL STARTS FROM INDEX 1!
+                wall0.add(414+i);
+            }
+        }
+        for (int i = 0;i<80;i++){
+            int a = wall0.get(i);
+            wall[i] = a;
+        }
+        return wall;
     }
 
     /*u6250866
@@ -155,4 +176,15 @@ public class GameLogic {
     }// return what direction of the snake.
     public void setOri(orientate o ){ action=o; } // change the snake direction.
     public void setState(state s) {situation=s;}// change the situation of game.
+
+    public static void main(String[] args) {
+        int[] init = {80,79,78,77,76};
+        int[] a =chooseWallPosition();
+        String a0 = "";
+        for (int i = 0;i<5;i++){
+            a0 += init[i] + ",";
+        }
+        String test = "80,79,78,77,76,";
+        System.out.println(a0.equals(test));
+    }
 }
