@@ -17,19 +17,19 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
-    public void starthard(View v) {//Start game
+    public void start_hard(View v) {//Start game as hard mode
         MainActivity.hard();
         Intent i = new Intent(StartActivity.this, MainActivity.class);
         startActivity(i);
     }
 
-    public void startnormal(View v) {//Start game
+    public void start_normal(View v) {//Start game as normal mode
         MainActivity.normal();
         Intent i = new Intent(StartActivity.this, MainActivity.class);
         startActivity(i);
     }
 
-    public void starteasy(View v) {//Start game
+    public void start_easy(View v) {//Start game as easy mode
         MainActivity.easy();
         Intent i = new Intent(StartActivity.this, MainActivity.class);
         startActivity(i);
