@@ -1,6 +1,5 @@
 package com.example.u6250082.myapplication;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 //Qingzheng XU
 //u6174243
     public void menu(View v) { //Button menu
-        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+        Intent i = new Intent(MainActivity.this, StartActivity.class);
         startActivity(i);
     }
 }
