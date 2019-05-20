@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
-//Qingzheng XU
+//Qingzheng Xu
 //u6174243
 public class StartActivity extends AppCompatActivity {
 

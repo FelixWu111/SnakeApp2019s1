@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Qingzheng Xu-->
+    <!--u6174243-->
     <com.example.u6250082.myapplication.DrawSnake
         android:id="@+id/drawSnack"
         android:layout_width="match_parent"

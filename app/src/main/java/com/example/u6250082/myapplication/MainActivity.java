@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         h.postDelayed(eachFrame,difficulty);
     }
 
-//Qingzheng XU
+//Qingzheng Xu
 //u6174243
     public void menu(View v) { //Button menu
         Intent i = new Intent(MainActivity.this, StartActivity.class);
