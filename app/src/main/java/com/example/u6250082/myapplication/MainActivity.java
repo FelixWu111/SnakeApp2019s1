@@ -10,7 +10,6 @@ public class MainActivity extends AppCompatActivity {
 
     GameLogic gi;
     drawSnack ds;
-    final Handler h =new Handler();
 
     /*u6250866
       YuWu*/
@@ -59,17 +58,21 @@ public class MainActivity extends AppCompatActivity {
         gi.buildw(); //add all the features
     }
 
+    /*u6250866
+      YuWu*/
+    long difficulty=180; //normal 180, hard 80, easy 280
+    final Handler h =new Handler();
+
     private void refreshHandler(){//The idea of delay 180ms in our MainActivity refreshHander
                                   // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
                                   //  because we countered a bug that if you don't delay, the snack will teleport.
-
        Runnable eachFrame = new Runnable() { // determine what will happen in next frame
             @Override
             public void run() {
                 /*u6250866
                   YuWu*/
                 gi.refreshState();
-                if (gi.getnowState()== GameLogic.state.alive){h.postDelayed(this,180);} //keep refreshing frames
+                if (gi.getnowState()== GameLogic.state.alive){h.postDelayed(this,difficulty);} //keep refreshing frames
                 if (gi.getnowState()== GameLogic.state.dead){ // reset the frame to initial state
                     gi.setState(GameLogic.state.alive);
                     gi.setOri(GameLogic.orientate.right);
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
        };
 
-        h.postDelayed(eachFrame,180);
+        h.postDelayed(eachFrame,difficulty);
     }
 
 //Qingzheng XU
