@@ -1,5 +1,6 @@
 package com.example.u6250082.myapplication;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gi = new GameLogic();
-        gi.firstStep(); //initialize the game's basic builds i.e. walls and the snack
+        gi.builds();
+        gi.buildw(); //initialize the game's basic builds i.e. walls and the snack
         gi.buildb(); //add in the random bean
         ds = (drawSnack)findViewById(R.id.drawSnack);
         ds.putinWhatToDraw(gi.getboardState());
@@ -54,36 +56,41 @@ public class MainActivity extends AppCompatActivity {
     public void restart(View v){  //create the function restart
         gi.setState(GameLogic.state.alive);
         gi.setOri(GameLogic.orientate.right);
-        gi.firstStep();
-        gi.buildb();
+        gi.builds();
+        gi.buildw();
+        gi.buildb(); //add all the features
     }
 
     private void refreshHandler(){//The idea of delay 180ms in our MainActivity refreshHander
                                   // "postDelayed(new Runnable())" is from Marcell Elek (2016)'s youtube video: https://www.youtube.com/watch?v=s9MZwZ--6G4
                                   //  because we countered a bug that if you don't delay, the snack will teleport.
-        h.postDelayed(new Runnable() {
+
+       Runnable eachFrame = new Runnable() { // determine what will happen in next frame
             @Override
             public void run() {
                 /*u6250866
                   YuWu*/
                 gi.refreshState();
-                if (gi.getnowState()== GameLogic.state.alive){
-                    h.postDelayed(this,180);//set the time of game delay
-                }
-                if (gi.getnowState()== GameLogic.state.dead){
+                if (gi.getnowState()== GameLogic.state.alive){h.postDelayed(this,180);} //keep refreshing frames
+                if (gi.getnowState()== GameLogic.state.dead){ // reset the frame to initial state
                     gi.setState(GameLogic.state.alive);
                     gi.setOri(GameLogic.orientate.right);
-                    gi.firstStep();
+                    gi.builds();
+                    gi.buildw(); //the bean will update itself, no need to add in refresh handler
 
                     ds = (drawSnack)findViewById(R.id.drawSnack);
                     ds.putinWhatToDraw(gi.getboardState());
                     ds.invalidate();
                     refreshHandler();
                 }
+
                 ds.putinWhatToDraw(gi.getboardState());
                 ds.invalidate();
+
             }
-        },180);
+       };
+
+        h.postDelayed(eachFrame,180);
     }
 
 //Qingzheng XU

@@ -28,10 +28,6 @@ public class GameLogic {
 
     public GameLogic(){} // just keep the constructer if we need further extensions
 
-    public void firstStep(){
-        builds();
-        buildw();
-    }
     /*u6250866 YuWu and
       u6250082 XuguangSong*/
     /* 0, 1, 2,.. 17
