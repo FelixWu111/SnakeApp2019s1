@@ -18,7 +18,7 @@
         android:layout_marginTop="416dp"
         android:background="@drawable/bg_button1"
         android:onClick="start"
-        android:text="Game Start"
+        android:text="@string/game_start"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,12 +32,12 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/bg_button1"
         android:onClick="help"
-        android:text="Help"
+        android:text="@string/help"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/instruction"
         android:layout_width="248dp"
         android:layout_height="205dp"
@@ -46,10 +46,8 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:ems="10"
         android:visibility="invisible"
-        android:inputType="textMultiLine"
-        android:text="Help"
+        android:text="@string/instruction"
         android:background="@color/gray"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +66,7 @@
         android:visibility="invisible"
         android:background="@drawable/bg_button1"
         android:onClick="back"
-        android:text="Back"
+        android:text="@string/back"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
