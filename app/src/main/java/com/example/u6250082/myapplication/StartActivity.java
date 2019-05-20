@@ -9,16 +9,16 @@ import android.view.animation.Animation;
 
 //Qingzheng XU
 //u6174243
-public class LoginActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_start);
     }
 
-    public void start(View v) {//Start tourist mode
-        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+    public void start(View v) {//Start game
+        Intent i = new Intent(StartActivity.this, MainActivity.class);
         startActivity(i);
     }
 
