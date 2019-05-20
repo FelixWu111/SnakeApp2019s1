@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         gi = new GameLogic();
         gi.builds();
-        gi.buildw(); //initialize the game's basic builds i.e. walls and the snack
+        gi.buildw(); //initialize the game's basic builds i.e. walls and the snake
         gi.buildb(); //add in the random bean
         ds = (DrawSnake)findViewById(R.id.drawSnack);
         ds.putinWhatToDraw(gi.getboardState());
