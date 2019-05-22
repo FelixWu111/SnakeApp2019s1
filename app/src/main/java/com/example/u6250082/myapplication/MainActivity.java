@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void restart(View v){  //create the function restart
-        gi.setState(GameLogic.state.alive);
+        gi.setState(true); // snack is alive at the beginning
         gi.setOri(GameLogic.orientate.right);
         gi.builds();
         gi.buildw(); //add all the features
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 /*u6250866
                   YuWu*/
                 gi.refreshState();
-                if (gi.getnowState()== GameLogic.state.alive){h.postDelayed(this,difficulty);} //keep refreshing frames
-                if (gi.getnowState()== GameLogic.state.dead){ // reset the frame to initial state
-                    gi.setState(GameLogic.state.alive);
+                if (gi.getnowState()){h.postDelayed(this,difficulty);} //keep refreshing frames if snack is alive
+                if (!gi.getnowState()){ // reset the frame to initial state if snack is dead
+                    gi.setState(true);
                     gi.setOri(GameLogic.orientate.right);
                     gi.builds();
                     gi.buildw(); //the bean will update itself, no need to add in refresh handler

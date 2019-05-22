@@ -15,21 +15,22 @@ public class GameLogic {
     public enum Board {
         Path,Edge,Head,Body,Bean
     }
-    public enum state{
-        alive,dead,start
-    }
+
+    /*u6250082
+      XuguangSong*/
+    private boolean snackAlive = true; // snack dead or not
 
     ArrayList<Integer> outside = new ArrayList<>();
     ArrayList<Integer> player = new ArrayList<>();
     ArrayList<Integer> bean = new ArrayList<>();
 
     private orientate action = orientate.right;
-    private state situation = state.alive;
 
     public GameLogic(){} // just keep the constructer if we need further extensions
 
     /*u6250082
       XuguangSong*/
+
     /* 0, 1, 2,.. 17
     *  18, 19,.. 35
     *  36, 37,......
@@ -96,7 +97,7 @@ public class GameLogic {
 
         for(Integer p:outside){
             if (player.get(0).equals(p)){
-                situation=state.dead;
+                snackAlive=false;
             }
 
         if(player.get(0).equals(bean.get(0))){
@@ -106,7 +107,7 @@ public class GameLogic {
 
         for(int y =1; y<player.size()-1;y++)
         if(player.get(0).equals(player.get(y))){
-            situation=state.dead;
+            snackAlive=false;
             }
 
         }
@@ -168,14 +169,14 @@ public class GameLogic {
 
     /*u6250866
       YuWu*/
-    public state getnowState(){
-        return situation;
-    } // return the situation of game.
+    public boolean getnowState(){
+        return snackAlive;
+    } // return the situation of the snack.
     public orientate getnowOri(){
         return action;
     }// return what direction of the snake.
     public void setOri(orientate o ){ action=o; } // change the snake direction.
-    public void setState(state s) {situation=s;}// change the situation of game.
+    public void setState(boolean b) {snackAlive=b;}// change the situation of the snack.
 
     public static void main(String[] args) {
         int[] init = {80,79,78,77,76};

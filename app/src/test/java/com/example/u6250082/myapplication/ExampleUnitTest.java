@@ -9,13 +9,14 @@ import static com.example.u6250082.myapplication.GameLogic.chooseSnakePosition;
 import static com.example.u6250082.myapplication.GameLogic.chooseWallPosition;
 import static com.example.u6250082.myapplication.GameLogic.chooseBeanPosition;
 import static org.junit.Assert.*;
-/*u6250866
-      YuWu*/
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
+/*u6250866
+      YuWu*/
 public class ExampleUnitTest {
     String answerForWall = "0,18,36,54,72,90,108,126,144,162,180,198,216,234,252,270,288,306,324,342,360,378,396,414,19,415,20,416,21,417,22,418,23,419,24,420,25,421,26,422,27,423,28,424,29,425,30,426,31,427,32,428,33,429,34,430,17,35,53,71,89,107,125,143,161,179,197,215,233,251,269,287,305,323,341,359,377,395,413,431,0,";
     String answerForSnake = "80,79,78,77,76,";
