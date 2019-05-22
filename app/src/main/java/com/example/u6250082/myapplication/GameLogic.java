@@ -4,37 +4,43 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameLogic {
+    /*u6250082
+      Xuguang Song*/
+
+    /* 0, 1, 2,.. 17
+     *  18, 19,.. 35
+     *  36, 37,......
+     *  468........ 485*/
     public static final int xboard =18;
     public static final int yboard =27;
 
     /*u6250866
      YuWu*/
+
+    // what is the snack's direction
     public enum orientate{
         up,down,left,right
     }
+
+    // what is each position's class
     public enum Board {
         Path,Edge,Head,Body,Bean
     }
+
+    private orientate action = orientate.right; // initial orientation for the snack
 
     /*u6250082
       XuguangSong*/
     private boolean snackAlive = true; // snack dead or not
 
-    ArrayList<Integer> outside = new ArrayList<>();
-    ArrayList<Integer> player = new ArrayList<>();
-    ArrayList<Integer> bean = new ArrayList<>();
+    ArrayList<Integer> outside = new ArrayList<>(); // the position array for outside
+    ArrayList<Integer> player = new ArrayList<>(); // the position array for the snack
 
-    private orientate action = orientate.right;
-
+    ArrayList<Integer> bean = new ArrayList<>(); // the position for the bean, I set it to array because may be we want more beans for some extensions
     public GameLogic(){} // just keep the constructer if we need further extensions
 
     /*u6250082
       XuguangSong*/
-
-    /* 0, 1, 2,.. 17
-    *  18, 19,.. 35
-    *  36, 37,......
-    *  468........ 485*/
 
     public void builds(){
         player.clear();
@@ -42,16 +48,20 @@ public class GameLogic {
         for (int i :snake){
         player.add(i);}
     }
+
     /*u6250082
     Xuguang Song*/
+
     public void buildw(){
         int[] wall  = chooseWallPosition();
         for (int i = 0;i<80;i++){
             outside.add(wall[i]);
         }
     }
+
     /*u6250082
      Xuguang Song*/
+
     public void buildb(){
         bean.add(0,chooseBeanPosition(outside,player));
     }
@@ -123,12 +133,14 @@ public class GameLogic {
         }
         return b;
     }
+
     /*u6250866
           YuWu*/
     public static int[] chooseSnakePosition() {
         int[] init = {80,79,78,77,76};
         return init;
     }
+
     /*u6250866
           YuWu*/
     public static int[] chooseWallPosition() {

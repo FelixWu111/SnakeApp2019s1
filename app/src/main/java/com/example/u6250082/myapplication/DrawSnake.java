@@ -12,12 +12,16 @@ import android.view.View;
 /*u6250082
   Xuguang Song */
 public class DrawSnake extends View {
+
     public DrawSnake(Context c, AttributeSet a) {super(c, a);}
-    GameLogic.Board[] ondraw;
-    public void putinWhatToDraw(GameLogic.Board[] b){this.ondraw = b;}
+
+    public DrawSnake(Context c, AttributeSet a, int d) {super(c,a,d);}
+
+    public GameLogic.Board[] ondraw;
+    public void putinWhatToDraw(GameLogic.Board[] b){ ondraw = b;}
 
     Paint p = new Paint();
-    @Override // Draw Path,Edge,Head,Body,Bean
+    @Override // Override the onDraw method to draw Path,Edge,Head,Body,Bean
     protected void onDraw(Canvas c) {
         super.onDraw(c);
         for(int i = 0; i<ondraw.length ;i++){
