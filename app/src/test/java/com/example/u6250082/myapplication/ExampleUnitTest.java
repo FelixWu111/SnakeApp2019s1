@@ -28,7 +28,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testAddWall(){
+    public void testAddWall(){ // black box test, this should return the positions of walls in our game
         int[] wall =chooseWallPosition();
         String WallString = "";
         for (int i = 0;i<81;i++){
@@ -38,7 +38,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testAddSnake(){
+    public void testAddSnake(){ // black box test, this should return answer the initial position of the snack in our game
         int[] snake =chooseSnakePosition();
         String SnakeString = "";
         for (int i = 0;i<5;i++){
@@ -47,7 +47,7 @@ public class ExampleUnitTest {
         assertEquals(answerForSnake,SnakeString);
     }
     @Test
-    public void testAddBean(){
+    public void testAddBean(){ // white box test, the function should give a position for the bean which is smaller than 396 and bigger than 18 and not on the walls or on the snack
         ArrayList<Integer> wall0 = new ArrayList<>();
         ArrayList<Integer> snake0 = new ArrayList<>();
         for (int i = 0;i<81;i++){
