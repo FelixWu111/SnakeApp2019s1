@@ -15,7 +15,9 @@
     <string name="restart">Restart</string>
     <string name="menu">Menu</string>
     <string name="instruction">
-        This is the classical game Snake.\n
-        In this game, a player need to control the snake to eat beans.\n
+        This is the classical game Snake.\n\n
+        In this game, a player need to control the snake to eat beans.\n\n
+        Choose your prefer mode, use the direction button to control your snake and eat more beans!\n\n
+        Never knock into the wall or eat yourself!
     </string>
 </resources>
